@@ -7,7 +7,17 @@ LIBS += -lsfml-graphics -lsfml-window -lsfml-system
 
 SOURCES += \
     src/main.cpp \
-    src/Misc.cpp
+    src/Misc.cpp \
+    src/Unit.cpp \
+    src/Object.cpp \
+    src/Window.cpp \
+    src/TextureManager.cpp \
+    src/UnitType.cpp
 
 HEADERS += \
-    src/Misc.h
+    src/Misc.h \
+    src/Unit.h \
+    src/Object.h \
+    src/Window.h \
+    src/TextureManager.h \
+    src/UnitType.h
