@@ -4,11 +4,14 @@
 #include "Misc.h"
 
 struct UnitType {
-    std::string unitName;
+    uint typeId;
     std::string texturePath;
+    float scale;
     uint speed;
-    uint attackDmg;
-    uint attackSpeed;
+    uint atkDmg;
+    uint atkSpd;
+
+    void readFromFile(std::string fileName);
 };
 
 #endif // UNITTYPE_H

@@ -12,11 +12,29 @@ public:
 
     ~Unit();
 
-    const sf::Vector2f& position();
+    uint atkDmg();
+
+    void setAttackDmg(uint newAtkDmg);
+
+    uint atkSpd();
+
+    void setAttackSpeed(uint newAtkSpd);
+
+    uint speed();
+
+    void setSpeed(uint newSpd);
+
+    void setUnitType(UnitType unitType);
 
     void setTexture(std::string texturePath);
 
+    const sf::Vector2f& position();
+
     void setPosition(const sf::Vector2f& newPos);
+
+    float angle();
+
+    void setAngle(float angle);
 
     float scale();
 
@@ -25,6 +43,8 @@ public:
     void draw(sf::RenderWindow& window);
 
 private:
+    void update();
+
     UnitType          _unitType;
     sf::Sprite        _sprite;
 };

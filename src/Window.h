@@ -16,9 +16,9 @@ public:
 
     bool isOpen();
 
-    void draw(Object& obj);
-
     void registerAct(void (*func)(sf::Event&));
+
+    sf::RenderWindow* window();
 
 private:
 

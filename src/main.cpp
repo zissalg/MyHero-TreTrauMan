@@ -1,54 +1,38 @@
 #include "Window.h"
 #include "Unit.h"
+#include "ObjectManager.h"
+#include "Terrain.h"
 
 Window window(sf::Vector2i(800, 600));
-Unit treTrauMan;
-Unit monsterTest;
-Unit bullet;
+Terrain terrain(&window, sf::Vector2i(16, 16));
+ObjectManager objMan(&window);
+Unit* myHero;
+UnitType mainChar = {
+    0,
+    "textures/tretrauman.png",
+    4.0f,
+    1,
+    1,
+    1,
+};
 
-void hasClicked(sf::Event& event)
+void rotateChar(sf::Event& event)
 {
-
-    if (event.type != sf::Event::MouseButtonPressed)
-        return;
-
-    auto pos = treTrauMan.position();
-
-    pos.y -= 40;
-    pos.x += 32 - 8;
-
-    bullet.setPosition(pos);
+    myHero->setAngle();
 }
 
 int main()
 {
-    window.registerAct(hasClicked);
-
-    bullet.setTexture("textures/bullet.png");
-    bullet.setScale(2.0f);
-
-    treTrauMan.setTexture("textures/tretrauman.png");
-    treTrauMan.setPosition(sf::Vector2f(500, 300));
-
-    monsterTest.setTexture("textures/tree01.png");
-    monsterTest.setPosition(sf::Vector2f(300, 200));
-
-    bullet.setTexture("textures/bullet.png");
+    myHero = objMan.createUnit(mainChar, sf::Vector2f(50.f, 50.f));
 
     while (window.isOpen())
     {
         window.begin();
 
-        sf::Vector2f bulletPos = bullet.position();
+        terrain.draw();
 
-        bulletPos.y -= 1;
+        objMan.draw();
 
-        bullet.setPosition(bulletPos);
-
-
-        window.draw(treTrauMan);
-        window.draw(monsterTest);
-        window.draw(bullet);
         window.end();
     }
     return 0;

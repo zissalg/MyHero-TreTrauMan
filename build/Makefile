@@ -56,14 +56,18 @@ SOURCES       = ../src/main.cpp \
 		../src/Object.cpp \
 		../src/Window.cpp \
 		../src/TextureManager.cpp \
-		../src/UnitType.cpp 
+		../src/UnitType.cpp \
+		../src/ObjectManager.cpp \
+		../src/Terrain.cpp 
 OBJECTS       = main.o \
 		Misc.o \
 		Unit.o \
 		Object.o \
 		Window.o \
 		TextureManager.o \
-		UnitType.o
+		UnitType.o \
+		ObjectManager.o \
+		Terrain.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -137,13 +141,17 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/Object.h \
 		src/Window.h \
 		src/TextureManager.h \
-		src/UnitType.h ../src/main.cpp \
+		src/UnitType.h \
+		src/ObjectManager.h \
+		src/Terrain.h ../src/main.cpp \
 		../src/Misc.cpp \
 		../src/Unit.cpp \
 		../src/Object.cpp \
 		../src/Window.cpp \
 		../src/TextureManager.cpp \
-		../src/UnitType.cpp
+		../src/UnitType.cpp \
+		../src/ObjectManager.cpp \
+		../src/Terrain.cpp
 QMAKE_TARGET  = StolenPricess
 DESTDIR       = 
 TARGET        = StolenPricess
@@ -341,7 +349,10 @@ main.o: ../src/main.cpp ../src/Window.h \
 		../src/Misc.h \
 		../src/Object.h \
 		../src/Unit.h \
-		../src/TextureManager.h
+		../src/TextureManager.h \
+		../src/UnitType.h \
+		../src/ObjectManager.h \
+		../src/Terrain.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../src/main.cpp
 
 Misc.o: ../src/Misc.cpp 
@@ -350,7 +361,8 @@ Misc.o: ../src/Misc.cpp
 Unit.o: ../src/Unit.cpp ../src/Unit.h \
 		../src/Misc.h \
 		../src/Object.h \
-		../src/TextureManager.h
+		../src/TextureManager.h \
+		../src/UnitType.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Unit.o ../src/Unit.cpp
 
 Object.o: ../src/Object.cpp ../src/Object.h \
@@ -366,8 +378,25 @@ TextureManager.o: ../src/TextureManager.cpp ../src/TextureManager.h \
 		../src/Misc.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TextureManager.o ../src/TextureManager.cpp
 
-UnitType.o: ../src/UnitType.cpp 
+UnitType.o: ../src/UnitType.cpp ../src/UnitType.h \
+		../src/Misc.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o UnitType.o ../src/UnitType.cpp
+
+ObjectManager.o: ../src/ObjectManager.cpp ../src/ObjectManager.h \
+		../src/Misc.h \
+		../src/Object.h \
+		../src/Window.h \
+		../src/Unit.h \
+		../src/TextureManager.h \
+		../src/UnitType.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ObjectManager.o ../src/ObjectManager.cpp
+
+Terrain.o: ../src/Terrain.cpp ../src/Terrain.h \
+		../src/Misc.h \
+		../src/Window.h \
+		../src/Object.h \
+		../src/TextureManager.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Terrain.o ../src/Terrain.cpp
 
 ####### Install
 

@@ -1,0 +1,2 @@
+0 textures/tretrauman.png 1 15 10
+1 textures/monster.png 1 15 10

@@ -41,7 +41,7 @@ bool Window::isOpen()
     return _window.isOpen();
 }
 
-void Window::draw(Object &obj)
+sf::RenderWindow* Window::window()
 {
-    obj.draw(_window);
+    return &_window;
 }

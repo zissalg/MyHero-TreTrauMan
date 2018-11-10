@@ -12,7 +12,9 @@ SOURCES += \
     src/Object.cpp \
     src/Window.cpp \
     src/TextureManager.cpp \
-    src/UnitType.cpp
+    src/UnitType.cpp \
+    src/ObjectManager.cpp \
+    src/Terrain.cpp
 
 HEADERS += \
     src/Misc.h \
@@ -20,4 +22,6 @@ HEADERS += \
     src/Object.h \
     src/Window.h \
     src/TextureManager.h \
-    src/UnitType.h
+    src/UnitType.h \
+    src/ObjectManager.h \
+    src/Terrain.h
